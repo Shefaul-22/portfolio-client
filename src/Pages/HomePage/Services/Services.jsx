@@ -33,7 +33,7 @@ const Services = () => {
 
     return (
         <section id="services" className="relative py-24 px-6 overflow-hidden" ref={ref}>
-            {/* Background Orbs - Hero Section এর সাথে সামঞ্জস্য রেখে */}
+          
             <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/10 blur-[120px] -z-10 animate-glow-pulse" />
             <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-accent/10 blur-[120px] -z-10 animate-glow-pulse" style={{ animationDelay: "1.5s" }} />
 

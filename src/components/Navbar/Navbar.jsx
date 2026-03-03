@@ -23,7 +23,7 @@ const navLinks = [
     { label: "Home", href: "#home" },
     { label: "Services", href: "#services" },
     { label: "About", href: "#about" },
-    { label: "Skills", href: "#skills" },
+   
     { label: "Projects", href: "#projects" },
     { label: "Contact", href: "#contact" },
 ];
@@ -107,7 +107,7 @@ const Navbar = () => {
                     &lt;Dev /&gt;
                 </button>
 
-                <div className="hidden md:flex items-center gap-6 bg-white/5 rounded-full px-3 py-1 border border-white/5">
+                <div className="hidden md:flex items-center gap-4 bg-white/5 rounded-full px-3 py-1 border border-white/5">
                     {
                         navLinks.map(({ label, href }) => (
                             <button
