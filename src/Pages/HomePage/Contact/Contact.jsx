@@ -1,10 +1,53 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Sparkles, MessageSquare } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
+import Swal from 'sweetalert2';
 
 const Contact = () => {
+
+
+
+
+    const handleContactClick = (e, item) => {
+
+        if (item.label === "Email" || item.label === "Phone") {
+            e.preventDefault();
+
+            Swal.fire({
+                title: `Connect via ${item.label}`,
+                text: item.value,
+                icon: 'info',
+                background: '#0f172a',
+                color: '#fff',
+                showCancelButton: true,
+                confirmButtonColor: '#3b82f6',
+                cancelButtonColor: '#64748b',
+                confirmButtonText: item.label === "Email" ? 'Send Email' : 'Call Now',
+                cancelButtonText: 'Copy to Clipboard',
+                customClass: {
+                    popup: 'rounded-[2rem] border border-white/10 glass',
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = item.link;
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    navigator.clipboard.writeText(item.value);
+                    Swal.fire({
+                        title: 'Copied!',
+                        text: 'Copied to clipboard successfully.',
+                        icon: 'success',
+                        timer: 1500,
+                        showConfirmButton: false,
+                        background: '#0f172a',
+                        color: '#fff',
+                    });
+                }
+            });
+        }
+    };
     return (
-        <section id="contact" className="relative py-24 px-6 bg-background overflow-hidden">
+        <section className="relative py-24 px-6 bg-background overflow-hidden">
             {/* Background Decorative Glows */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10" />
@@ -31,7 +74,7 @@ const Contact = () => {
                     <div className="space-y-4">
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-foreground leading-[1.1]">
                             Let's Build Something <br />
-                            <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
+                            <span className="bg-gradient-to-r from-primary to-blue-300 bg-clip-text text-transparent">
                                 Extraordinary
                             </span> Together
                         </h2>
@@ -55,15 +98,16 @@ const Contact = () => {
                             Whether you have a question, a project idea, or just want to say hi, my inbox is always open.
                         </p>
 
-                        <div className="space-y-6">
+                        <div id="contact" className="space-y-6">
                             {[
-                                { icon: <Mail size={20} />, label: "Email", value: "your-email@example.com", link: "shefaul7457@gmail.com" },
-                                { icon: <Phone size={20} />, label: "Phone", value: "+880 1XXX XXXXXX", link: "tel:+8801300108645" },
-                                { icon: <MapPin size={20} />, label: "Location", value: "Dhaka, Bangladesh", link: "#" }
+                                { icon: <Mail size={20} />, label: "Email", value: "cse1805022brur@gmail.com", link: "mailto:cse1805022brur@gmail.com" },
+                                { icon: <Phone size={20} />, label: "Phone", value: "+880 1300 108645", link: "tel:+8801300108645" },
+                                { icon: <MapPin size={20} />, label: "Location", value: "Rangpur, Bangladesh", link: "#" }
                             ].map((item, index) => (
                                 <a
                                     key={index}
                                     href={item.link}
+                                    onClick={(e) => handleContactClick(e, item)}
                                     className="group flex items-center gap-5 p-4 rounded-2xl glass border border-white/5 hover:border-primary/20 transition-all duration-300"
                                 >
                                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-lg shadow-primary/5">
@@ -83,8 +127,15 @@ const Contact = () => {
                             <div className="flex gap-4">
                                 {[
                                     { icon: <Github size={20} />, link: "https://github.com/Shefaul-22" },
+
                                     { icon: <Linkedin size={20} />, link: "https://www.linkedin.com/in/mohammad-shefaul-karim-24b2b52ba" },
-                                    { icon: <Twitter size={20} />, link: "#" }
+
+                                    { icon: <FaWhatsapp size={20} />, link: "https://wa.me/8801300108645" },
+
+                                    { icon: <Twitter size={20} />, link: "#" },
+
+
+
                                 ].map((social, i) => (
                                     <a
                                         key={i}

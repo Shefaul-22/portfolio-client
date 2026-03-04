@@ -1,10 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { User, Code2, Trophy, Terminal, Cpu, Target, Rocket, ShieldCheck } from "lucide-react";
+
+import { User, Code2, Trophy, Terminal, Cpu, Target, Rocket, ShieldCheck, FileText, Download } from "lucide-react";
 
 const stats = [
-    { label: "Years of Experience", value: "2+", icon: Trophy },
-    { label: "Projects Delivered", value: "20+", icon: Code2 },
+    { label: "Years of Experience", value: "1+", icon: Trophy },
+    { label: "Projects Delivered", value: "10+", icon: Code2 },
     { label: "Core Technologies", value: "12+", icon: Terminal },
 ];
 
@@ -37,9 +38,9 @@ const About = () => {
 
                             <div className="absolute inset-0 rounded-[2.5rem] glass overflow-hidden border border-black/5 dark:border-white/10 group shadow-2xl">
                                 <img
-                                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop"
+                                    src="https://i.ibb.co.com/ym949rcg/01300108645.jpg"
                                     alt="Md Shefaul Karim"
-                                    className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
+                                    className="w-full h-full object-cover transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
                             </div>
@@ -86,10 +87,6 @@ const About = () => {
                             <p>
                                 For me, development isn't just about writing code; it's about solving business challenges through technology. By leveraging deep expertise in <span className="text-foreground font-bold italic">Data Structures (DSA)</span> and <span className="text-foreground font-bold italic">System Architecture (OOP)</span>, I ensure that every application I deliver is optimized for speed, security, and long-term scalability.
                             </p>
-
-                            <p>
-                                Whether it's building complex backends with <span className="text-foreground font-semibold">Node.js</span> or crafting intuitive interfaces with <span className="text-foreground font-semibold">React/Next.js</span>, I focus on delivering clean, maintainable code that drives measurable impact for clients and stakeholders.
-                            </p>
                         </div>
 
                         {/* Metrics Grid */}
@@ -105,21 +102,42 @@ const About = () => {
                         </div>
 
                         {/* Skills Matrix */}
-                        <div className="space-y-6">
-                            <div className="flex items-center gap-4">
-                                <span className="text-[11px] font-black uppercase tracking-[0.5em] text-muted-foreground/60 whitespace-nowrap">Technical Arsenal</span>
-                                <div className="h-[1px] w-full bg-gradient-to-r from-primary/20 to-transparent" />
+                        <div className="space-y-8">
+                            <div className="space-y-6">
+                                <div className="flex items-center gap-4">
+                                    <span className="text-[11px] font-black uppercase tracking-[0.5em] text-muted-foreground/60 whitespace-nowrap">Technical Arsenal</span>
+                                    <div className="h-[1px] w-full bg-gradient-to-r from-primary/20 to-transparent" />
+                                </div>
+                                <div className="flex flex-wrap gap-2.5">
+                                    {skills.map((skill) => (
+                                        <span
+                                            key={skill}
+                                            className="text-[10px] font-black px-5 py-2.5 glass rounded-xl border border-black/5 dark:border-white/10 hover:border-primary/50 hover:text-primary transition-all duration-300 cursor-default text-muted-foreground uppercase tracking-[0.15em]"
+                                        >
+                                            {skill}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
-                            <div className="flex flex-wrap gap-2.5">
-                                {skills.map((skill) => (
-                                    <span
-                                        key={skill}
-                                        className="text-[10px] font-black px-5 py-2.5 glass rounded-xl border border-black/5 dark:border-white/10 hover:border-primary/50 hover:text-primary transition-all duration-300 cursor-default text-muted-foreground uppercase tracking-[0.15em]"
-                                    >
-                                        {skill}
-                                    </span>
-                                ))}
-                            </div>
+
+                            {/* --- Download CV Button --- */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.5 }}
+                                className="pt-4"
+                            >
+                                <a
+                                    href="/resume.pdf" 
+                                    download="Md_Shefaul_Karim_Resume.pdf"
+                                    className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-sm group transition-all duration-300 hover:shadow-[0_0_30px_rgba(var(--primary),0.4)] hover:scale-[1.02] active:scale-95"
+                                >
+                                    <FileText size={18} className="group-hover:rotate-12 transition-transform" />
+                                    <span>Download Resume</span>
+                                    <Download size={18} className="ml-2 group-hover:translate-y-1 transition-transform" />
+                                </a>
+                            </motion.div>
                         </div>
                     </motion.div>
                 </div>

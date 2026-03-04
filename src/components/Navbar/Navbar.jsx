@@ -23,7 +23,7 @@ const navLinks = [
     { label: "Home", href: "#home" },
     { label: "Services", href: "#services" },
     { label: "About", href: "#about" },
-   
+
     { label: "Projects", href: "#projects" },
     { label: "Contact", href: "#contact" },
 ];
@@ -95,17 +95,21 @@ const Navbar = () => {
                 "fixed top-6 left-1/2 z-50 transition-all duration-500 rounded-full border",
                 "w-[92%] max-w-6xl mx-auto",
                 scrolled
-                    ? "glass border-white/20 shadow-xl py-2 px-6"
+                    ? "bg-background/60 backdrop-blur-md border-white/10 shadow-xl py-2 px-6" // Glassmorphism komano hoyeche ekhane
                     : "bg-white/5 backdrop-blur-md border-white/10 py-4 px-8"
             )}
         >
             <div className="flex items-center justify-between gap-4">
-                <button
+                <div
                     onClick={() => scrollTo("#home")}
-                    className="text-2xl font-bold tracking-tighter text-gradient whitespace-nowrap"
+                    className=" w-14 h-14 rounded-full"
                 >
-                    &lt;Dev /&gt;
-                </button>
+                    <img 
+
+                    className="w-14 h-14 rounded-full"
+                    
+                    src="https://i.ibb.co.com/KtMj2J8/extra-large.png" alt="Logo image" />
+                </div>
 
                 <div className="hidden md:flex items-center gap-4 bg-white/5 rounded-full px-3 py-1 border border-white/5">
                     {

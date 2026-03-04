@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown, Github, Linkedin, Twitter, Facebook } from "lucide-react";
+
+import { FaWhatsapp } from "react-icons/fa";
 
 const roles = ["Frontend Developer", "Backend Engineer", "Full Stack Developer", "UI/UX Enthusiast"];
 
@@ -25,7 +27,6 @@ const Hero = () => {
                 setIsDeleting(false);
                 setRoleIndex((prev) => (prev + 1) % roles.length);
             } else {
-                
                 setText((prev) => {
                     const nextText = isDeleting
                         ? currentRole.slice(0, prev.length - 1)
@@ -36,8 +37,6 @@ const Hero = () => {
         }, determineSpeed());
 
         return () => clearTimeout(timeout);
-
-        
     }, [text, isDeleting, roleIndex]);
 
     const scrollTo = (href) => {
@@ -47,7 +46,33 @@ const Hero = () => {
     };
 
     return (
-        <section id="home" className="relative min-h-screen flex items-center section-padding overflow-hidden">
+        <section id="home" className="relative min-h-screen flex items-center section-padding overflow-hidden mt-5 md:mt-8">
+            {/* Social Icons Left Side */}
+            <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 1 }}
+                className="hidden xl:flex flex-col items-center gap-6 absolute left-10 top-1/2 -translate-y-1/2 z-50"
+            >
+                {[
+                    { icon: <Github size={20} />, link: "https://github.com/Shefaul-22" },
+                    { icon: <Linkedin size={20} />, link: "https://www.linkedin.com/in/mohammad-shefaul-karim-24b2b52ba" },
+                    { icon: <FaWhatsapp size={20} />, link: "https://wa.me/8801300108645" },
+                    { icon: <Twitter size={20} />, link: "#" },
+                    { icon: <Facebook size={20} />, link: "#" }
+                ].map((social, i) => (
+                    <a
+                        key={i}
+                        href={social.link}
+                        target="_blank"
+                        className="text-muted-foreground hover:text-primary transition-all duration-300 hover:-translate-y-1"
+                    >
+                        {social.icon}
+                    </a>
+                ))}
+                <div className="w-[1px] h-20 bg-gradient-to-b from-primary/50 to-transparent mt-2" />
+            </motion.div>
+
             {/* Background gradient orbs */}
             <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/10 blur-[120px] animate-glow-pulse" />
             <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-accent/10 blur-[120px] animate-glow-pulse" style={{ animationDelay: "1.5s" }} />
@@ -89,13 +114,13 @@ const Hero = () => {
                     <div className="flex flex-wrap gap-4">
                         <button
                             onClick={() => scrollTo("#contact")}
-                            className="btn-primary-glow px-8 py-3 rounded-xl text-primary-foreground font-semibold text-sm transition-all duration-300"
+                            className="btn-primary-glow px-8 py-3 cursor-pointer rounded-xl text-primary-foreground font-semibold text-sm transition-all duration-300"
                         >
                             Send Hi 👋
                         </button>
                         <button
                             onClick={() => scrollTo("#projects")}
-                            className="px-8 py-3 rounded-xl glass font-semibold text-sm text-foreground transition-all duration-300 hover:scale-105 flex items-center gap-2"
+                            className="px-8 py-3 rounded-xl glass font-semibold cursor-pointer text-sm text-foreground transition-all duration-300 hover:scale-105 flex items-center gap-2"
                         >
                             View Projects <ArrowRight size={16} />
                         </button>
@@ -110,25 +135,36 @@ const Hero = () => {
                     className="relative hidden lg:flex items-center justify-center"
                 >
                     <div className="relative w-80 h-80">
+                        {/* Animated Background Rings */}
                         <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 animate-float" />
                         <div className="absolute inset-4 rounded-full glass animate-float" style={{ animationDelay: "0.5s" }} />
+
+                        {/* --- Image Container --- */}
+                        <div className="absolute inset-4 rounded-full overflow-hidden border-2 border-white/10 z-10 animate-float" style={{ animationDelay: "0.5s" }}>
+                            <img
+                                src="https://i.ibb.co.com/ym949rcg/01300108645.jpg" // Placeholder Image
+                                alt="Md Shefaul Karim"
+                                className="w-full h-full object-fit bg-primary/5"
+                            />
+                        </div>
+                        {/* ----------------------- */}
 
                         {/* Dynamic Tech Badges */}
                         <motion.div
                             animate={{ y: [-10, 10, -10] }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -top-8 -right-8 glass-strong rounded-2xl px-5 py-3 shadow-2xl border-white/10"
+                            className="absolute -top-8 -right-8 glass-strong rounded-2xl px-5 py-3 shadow-2xl border-white/10 z-20"
                         >
-                            <div className="text-xs font-bold font-mono text-primary uppercase tracking-tighter">React</div>
+                            <div className="text-xs font-bold font-mono text-primary uppercase tracking-tighter">React / Next.js</div>
                             <div className="text-[10px] text-muted-foreground">Expertise</div>
                         </motion.div>
 
                         <motion.div
                             animate={{ y: [10, -10, 10] }}
                             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -bottom-4 -left-8 glass-strong rounded-2xl px-5 py-3 shadow-2xl border-white/10"
+                            className="absolute -bottom-4 -left-8 glass-strong rounded-2xl px-5 py-3 shadow-2xl border-white/10 z-20"
                         >
-                            <div className="text-xs font-bold font-mono text-accent uppercase tracking-tighter">Node.js</div>
+                            <div className="text-xs font-bold font-mono text-accent uppercase tracking-tighter">Node.js | Java</div>
                             <div className="text-[10px] text-muted-foreground">Backend</div>
                         </motion.div>
                     </div>
