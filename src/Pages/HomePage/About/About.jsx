@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-import { User, Code2, Trophy, Terminal, Cpu, Target, Rocket, ShieldCheck, FileText, Download } from "lucide-react";
+import {  Code2, Trophy, Terminal,  Rocket, ShieldCheck, } from "lucide-react";
 
 const stats = [
     { label: "Years of Experience", value: "1+", icon: Trophy },
@@ -9,11 +9,7 @@ const stats = [
     { label: "Core Technologies", value: "12+", icon: Terminal },
 ];
 
-const skills = [
-    "React.js", "Next.js", "Node.js", "Express.js",
-    "MongoDB", "Tailwind CSS", "TypeScript", "Framer Motion",
-    "DSA", "OOP", "C++ (CP)", "Git & GitHub"
-];
+
 
 const About = () => {
     return (
@@ -101,44 +97,7 @@ const About = () => {
                             ))}
                         </div>
 
-                        {/* Skills Matrix */}
-                        <div className="space-y-8">
-                            <div className="space-y-6">
-                                <div className="flex items-center gap-4">
-                                    <span className="text-[11px] font-black uppercase tracking-[0.5em] text-muted-foreground/60 whitespace-nowrap">Technical Arsenal</span>
-                                    <div className="h-[1px] w-full bg-gradient-to-r from-primary/20 to-transparent" />
-                                </div>
-                                <div className="flex flex-wrap gap-2.5">
-                                    {skills.map((skill) => (
-                                        <span
-                                            key={skill}
-                                            className="text-[10px] font-black px-5 py-2.5 glass rounded-xl border border-black/5 dark:border-white/10 hover:border-primary/50 hover:text-primary transition-all duration-300 cursor-default text-muted-foreground uppercase tracking-[0.15em]"
-                                        >
-                                            {skill}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* --- Download CV Button --- */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.5 }}
-                                className="pt-4"
-                            >
-                                <a
-                                    href="/resume.pdf" 
-                                    download="Md_Shefaul_Karim_Resume.pdf"
-                                    className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-sm group transition-all duration-300 hover:shadow-[0_0_30px_rgba(var(--primary),0.4)] hover:scale-[1.02] active:scale-95"
-                                >
-                                    <FileText size={18} className="group-hover:rotate-12 transition-transform" />
-                                    <span>Download Resume</span>
-                                    <Download size={18} className="ml-2 group-hover:translate-y-1 transition-transform" />
-                                </a>
-                            </motion.div>
-                        </div>
+                        
                     </motion.div>
                 </div>
             </div>

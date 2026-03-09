@@ -4,6 +4,8 @@ import Services from './Services/Services';
 import About from './About/About';
 import Projects from './Projects/Projects';
 import Contact from './Contact/Contact';
+import SkillAndTechStack from './Skills/SkillAndTechStack';
+
 
 const HomePage = () => {
     return (
@@ -11,6 +13,7 @@ const HomePage = () => {
            <Hero></Hero>
            <Services></Services>
            <About></About>
+           <SkillAndTechStack></SkillAndTechStack>
            <Projects></Projects>
            <Contact></Contact>
         </div>

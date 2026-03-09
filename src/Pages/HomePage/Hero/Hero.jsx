@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown, Github, Linkedin, Twitter, Facebook } from "lucide-react";
+import { ArrowRight, ChevronDown, Github, Linkedin, Twitter, Facebook, FileText, Download } from "lucide-react";
 
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -46,7 +46,7 @@ const Hero = () => {
     };
 
     return (
-        <section id="home" className="relative min-h-screen flex items-center section-padding overflow-hidden mt-5 md:mt-8">
+        <section id="home" className="relative min-h-screen flex items-center section-padding overflow-hidden mt-6 md:mt-12">
             {/* Social Icons Left Side */}
             <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -91,7 +91,7 @@ const Hero = () => {
                         transition={{ delay: 0.2 }}
                         className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-muted-foreground mb-6"
                     >
-                        <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                        <span className="w-2 h-2 rounded-full bg-primary font-bold animate-pulse" />
                         Available for work
                     </motion.div>
 
@@ -125,6 +125,25 @@ const Hero = () => {
                             View Projects <ArrowRight size={16} />
                         </button>
                     </div>
+
+                    {/* --- Download CV Button --- */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.5 }}
+                        className="pt-4"
+                    >
+                        <a
+                            href="/resume.pdf"
+                            download="Md_Shefaul_Karim_Resume.pdf"
+                            className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-sm group transition-all duration-300 hover:shadow-[0_0_30px_rgba(var(--primary),0.4)] hover:scale-[1.02] active:scale-95"
+                        >
+                            <FileText size={18} className="group-hover:rotate-12 transition-transform" />
+                            <span>Download Resume</span>
+                            <Download size={18} className="ml-2 group-hover:translate-y-1 transition-transform" />
+                        </a>
+                    </motion.div>
                 </motion.div>
 
                 {/* Right Side Visuals */}
@@ -132,7 +151,7 @@ const Hero = () => {
                     initial={{ opacity: 0, x: 60 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className="relative hidden lg:flex items-center justify-center"
+                    className="relative flex items-center justify-center mt-12 lg:mt-0"
                 >
                     <div className="relative w-80 h-80">
                         {/* Animated Background Rings */}
