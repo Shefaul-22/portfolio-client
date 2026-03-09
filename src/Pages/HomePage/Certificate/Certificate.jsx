@@ -22,8 +22,8 @@ const educationData = [
         status: "Completed",
         description: "Solid foundation in DSA, Web Technologies, and Software Engineering.",
         color: "from-purple-500 to-pink-400",
-        certificateLink: "#",
-        imageUrl: "https://via.placeholder.com/400x200"
+        certificateLink: "https://i.ibb.co.com/F4S7npjD/bsc-image.jpg",
+        imageUrl: "https://i.ibb.co.com/F4S7npjD/bsc-image.jpg"
     },
     {
         type: "skill",

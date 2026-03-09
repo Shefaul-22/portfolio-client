@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github as GithubIcon, Code2, Sparkles, ArrowUpRight } from "lucide-react";
+import { ExternalLink, Github as GithubIcon, Code2, Sparkles, ArrowUpRight, EyeIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const categories = ["All", "Full Stack", "Frontend"];
 
 const projects = [
-
     {
+        id: "civic-care",
         title: "Civic Care",
         description: "A digital urban governance platform that allows citizens to report local infrastructure issues like broken roads or streetlights, track resolution status, and engage with city authorities in real-time.",
         tech: ["React.js", "Node.js", "MongoDB", "Express", "Firebase"],
@@ -15,8 +16,8 @@ const projects = [
         live: "https://public-care.web.app",
         github: "https://github.com/Shefaul-22/Civic-Care-Client",
     },
-
     {
+        id: "rent-wheels",
         title: "RentWheels",
         description: "A premium car rental platform featuring a seamless booking system, real-time availability, and a dynamic user dashboard for effortless vehicle management.",
         tech: ["React.js", "Firebase", "Node.js", "MongoDB", "Tailwind"],
@@ -26,6 +27,7 @@ const projects = [
         github: "https://github.com/Shefaul-22/rentwheels-client",
     },
     {
+        id: "gamehub-library",
         title: "GameHub Library",
         description: "A comprehensive game discovery platform where users can explore, filter, and review their favorite titles with a high-performance modern UI.",
         tech: ["React.js", "Tailwind CSS", "Firebase", "Rest API"],
@@ -34,8 +36,8 @@ const projects = [
         live: "https://gamehub-library.web.app",
         github: "https://github.com/Shefaul-22/gamehub-library",
     },
-
     {
+        id: "lingo-learning",
         title: "Lingo Learning",
         description: "An interactive English-to-Bangla dictionary with smart search and vocabulary building features tailored for language enthusiasts.",
         tech: ["React.js", "Tailwind CSS", "Netlify", "JSON Data"],
@@ -45,6 +47,7 @@ const projects = [
         github: "https://github.com/Shefaul-22/English-to-Bangla-Learning-Dictionary",
     },
 ];
+
 
 const Projects = () => {
     const [activeTab, setActiveTab] = useState("All");
@@ -97,75 +100,92 @@ const Projects = () => {
                 {/* Projects Grid */}
                 <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <AnimatePresence mode="popLayout">
-                        {filteredProjects.map((project) => (
-                            <motion.div
-                                key={project.title}
-                                layout
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.95 }}
-                                className="group flex flex-col glass rounded-[2.5rem] overflow-hidden border border-white/5 hover:border-primary/20 transition-all duration-500 shadow-xl"
-                            >
-                                {/* Top: Image Area */}
-                                <div className="relative aspect-[16/10] overflow-hidden">
-                                    <img
-                                        src={project.image}
-                                        alt={project.title}
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                    />
-                                    <div className="absolute top-4 right-4">
-                                        <span className="px-3 py-1 rounded-full glass-strong text-[9px] font-black uppercase tracking-widest text-primary border border-primary/20">
-                                            {project.category}
-                                        </span>
-                                    </div>
-                                </div>
-
-                                {/* Bottom: Content Area */}
-                                <div className="p-8 flex flex-col flex-grow">
-                                    <div className="flex items-center gap-2 mb-3">
-                                        <Code2 size={16} className="text-primary" />
-                                        <h3 className="text-xl font-bold text-foreground tracking-tight group-hover:text-primary transition-colors">
-                                            {project.title}
-                                        </h3>
-                                    </div>
-
-                                    <p className="text-muted-foreground text-sm leading-relaxed mb-6 font-medium line-clamp-3">
-                                        {project.description}
-                                    </p>
-
-                                    {/* Tech Stack Tags - Updated to # Style */}
-                                    <div className="flex flex-wrap gap-x-3 gap-y-1 mb-8 mt-auto">
-                                        {project.tech.map((t) => (
-                                            <span key={t} className="text-[11px] font-bold text-primary/70 tracking-tight">
-                                                <span className="text-muted-foreground/40 font-light">#</span>{t.toLowerCase().replace(/\s+/g, '')}
+                        {
+                            filteredProjects.map((project) => (
+                                <motion.div
+                                    key={project.id}
+                                    layout
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, scale: 0.95 }}
+                                    className="group flex flex-col glass rounded-[2.5rem] overflow-hidden border border-white/5 hover:border-primary/40 transition-all duration-500 shadow-xl"
+                                >
+                                    {/* Top: Image Area */}
+                                    <div className="relative aspect-[16/10] overflow-hidden">
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                        />
+                                        <div className="absolute top-4 right-4">
+                                            <span className="px-3 py-1 rounded-full glass-strong text-[9px] font-black uppercase tracking-widest text-primary border border-primary/20">
+                                                {project.category}
                                             </span>
-                                        ))}
+                                        </div>
                                     </div>
 
-                                    {/* Glassmorphism Action Buttons */}
-                                    <div className="flex gap-3">
-                                        <a
-                                            href={project.github}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-2xl glass border border-white/10 text-muted-foreground hover:text-primary hover:border-primary/30 text-[11px] font-black uppercase tracking-widest transition-all duration-300"
-                                        >
-                                            <GithubIcon size={14} />
-                                            Source
-                                        </a>
-                                        <a
-                                            href={project.live}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-2xl glass-strong border border-primary/20 text-primary hover:bg-primary/10 text-[11px] font-black uppercase tracking-widest transition-all duration-300 group/btn"
-                                        >
-                                            Live Demo
-                                            <ArrowUpRight size={14} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
-                                        </a>
+                                    {/* Bottom: Content Area */}
+                                    <div className="p-8 flex flex-col flex-grow">
+                                        <div className="flex items-center gap-2 mb-3">
+                                            <Code2 size={16} className="text-primary" />
+                                            <h3 className="text-xl font-bold text-foreground tracking-tight group-hover:text-primary transition-colors">
+                                                {project.title}
+                                            </h3>
+                                        </div>
+
+                                        <p className="text-muted-foreground text-sm leading-relaxed mb-6 font-medium line-clamp-3">
+                                            {project.description}
+                                        </p>
+
+                                        {/* Tech Stack Tags - Updated to # Style */}
+                                        <div className="flex flex-wrap gap-x-3 gap-y-1 mb-8 mt-auto">
+                                            {project.tech.map((t) => (
+                                                <span key={t} className="text-[11px] font-bold text-primary/70 tracking-tight">
+                                                    <span className="text-muted-foreground/40 font-light">#</span>{t.toLowerCase().replace(/\s+/g, '')}
+                                                </span>
+                                            ))}
+                                        </div>
+
+                                        {/* Glassmorphism Action Buttons */}
+                                        <div className="flex gap-3">
+                                            <a
+                                                href={project.github}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-2xl glass border border-white/10 text-muted-foreground hover:text-primary hover:border-primary/30 text-[11px] font-black uppercase tracking-widest transition-all duration-300"
+                                            >
+                                                <GithubIcon size={14} />
+                                                Source
+                                            </a>
+                                            <a
+                                                href={project.live}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-2xl glass-strong border border-primary/20 text-primary hover:bg-primary/10 text-[11px] font-black uppercase tracking-widest transition-all duration-300 group/btn"
+                                            >
+                                                Live Demo
+                                                <ArrowUpRight size={14} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                                            </a>
+                                        </div>
+
+                                        <div className="flex gap-3 mt-3">
+
+                                            <Link to={`/project-details/${project.id}`}
+
+
+                                                state={{project}}
+
+                                                rel="noopener noreferrer"
+                                                className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-2xl glass-strong border border-primary/20 text-primary hover:bg-primary/10 text-[11px] font-black uppercase tracking-widest transition-all duration-300 group/btn"
+                                            >
+                                                <EyeIcon size={14} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                                                View Details
+                                            </Link>
+                                        </div>
+
                                     </div>
-                                </div>
-                            </motion.div>
-                        ))}
+                                </motion.div>
+                            ))}
                     </AnimatePresence>
                 </motion.div>
             </div>
