@@ -4,7 +4,7 @@ import { ArrowRight, ChevronDown, Github, Linkedin, Twitter, Facebook, FileText,
 
 import { FaWhatsapp } from "react-icons/fa";
 
-const roles = ["Frontend Developer", "Backend Engineer", "Full Stack Developer", "UI/UX Enthusiast"];
+const roles = ["Frontend Developer", "Backend Developer", "Full Stack Developer", "UI/UX Enthusiast"];
 
 const Hero = () => {
     const [roleIndex, setRoleIndex] = useState(0);

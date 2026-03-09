@@ -5,6 +5,7 @@ import About from './About/About';
 import Projects from './Projects/Projects';
 import Contact from './Contact/Contact';
 import SkillAndTechStack from './Skills/SkillAndTechStack';
+import Certificate from './Certificate/Certificate';
 
 
 const HomePage = () => {
@@ -14,6 +15,7 @@ const HomePage = () => {
            <Services></Services>
            <About></About>
            <SkillAndTechStack></SkillAndTechStack>
+           <Certificate></Certificate>
            <Projects></Projects>
            <Contact></Contact>
         </div>

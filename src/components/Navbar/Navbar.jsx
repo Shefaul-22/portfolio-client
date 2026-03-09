@@ -23,6 +23,8 @@ const navLinks = [
     { label: "Home", href: "#home" },
     { label: "Services", href: "#services" },
     { label: "About", href: "#about" },
+    { label: "Skills", href: "#skills" },
+    { label: "Certificate", href: "#certificate" },
 
     { label: "Projects", href: "#projects" },
     { label: "Contact", href: "#contact" },
@@ -104,14 +106,14 @@ const Navbar = () => {
                     onClick={() => scrollTo("#home")}
                     className=" w-14 h-14 rounded-full"
                 >
-                    <img 
+                    <img
 
-                    className="w-14 h-14 rounded-full"
-                    
-                    src="https://i.ibb.co.com/KtMj2J8/extra-large.png" alt="Logo image" />
+                        className="w-14 h-14 rounded-full"
+
+                        src="https://i.ibb.co.com/KtMj2J8/extra-large.png" alt="Logo image" />
                 </div>
 
-                <div className="hidden md:flex items-center gap-4 bg-white/5 rounded-full px-3 py-1 border border-white/5">
+                <div className="hidden md:flex items-center gap-4 bg-white/7 rounded-full px-3 py-1 border border-white/5">
                     {
                         navLinks.map(({ label, href }) => (
                             <button
@@ -121,17 +123,18 @@ const Navbar = () => {
                                     "relative px-5 py-2 text-sm font-medium transition-all duration-300 rounded-full cursor-pointer",
                                     activeSection === href.slice(1)
                                         ? "text-primary"
-                                        : "text-muted-foreground hover:text-foreground"
+                                        : "text-foreground/70 hover:text-foreground"
                                 )}
                             >
                                 {label}
-                                {activeSection === href.slice(1) && (
-                                    <motion.div
-                                        layoutId="activeNav"
-                                        className="absolute inset-0 bg-primary/10 rounded-full border border-primary/20 -z-10"
-                                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                                    />
-                                )}
+                                {
+                                    activeSection === href.slice(1) && (
+                                        <motion.div
+                                            layoutId="activeNav"
+                                            className="absolute inset-0 bg-primary/10 rounded-full border border-primary/20 -z-10"
+                                            transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                                        />
+                                    )}
                             </button>
                         ))}
                 </div>
@@ -154,31 +157,32 @@ const Navbar = () => {
             </div>
 
             <AnimatePresence>
-                {mobileOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 15 }}
-                        className="absolute top-[110%] left-0 right-0 bg-background/95 backdrop-blur-sm rounded-3xl overflow-hidden md:hidden border border-white/10 shadow-2xl"
-                    >
-                        <div className="p-4 flex flex-col gap-2">
-                            {navLinks.map(({ label, href }) => (
-                                <button
-                                    key={href}
-                                    onClick={() => scrollTo(href)}
-                                    className={cn(
-                                        "w-full text-center px-4 py-4 rounded-2xl text-base font-medium transition-all",
-                                        activeSection === href.slice(1)
-                                            ? "bg-primary/10 text-primary border border-primary/20"
-                                            : "hover:bg-white/5 text-muted-foreground"
-                                    )}
-                                >
-                                    {label}
-                                </button>
-                            ))}
-                        </div>
-                    </motion.div>
-                )}
+                {
+                    mobileOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 15 }}
+                            className="absolute top-[110%] left-0 right-0 bg-background/95 backdrop-blur-sm rounded-3xl overflow-hidden md:hidden border border-white/10 shadow-2xl"
+                        >
+                            <div className="p-4 flex flex-col gap-2">
+                                {navLinks.map(({ label, href }) => (
+                                    <button
+                                        key={href}
+                                        onClick={() => scrollTo(href)}
+                                        className={cn(
+                                            "w-full text-center px-4 py-4 rounded-2xl text-base font-medium transition-all",
+                                            activeSection === href.slice(1)
+                                                ? "bg-primary/10 text-primary border border-primary/20"
+                                                : "hover:bg-white/5 text-muted-foreground"
+                                        )}
+                                    >
+                                        {label}
+                                    </button>
+                                ))}
+                            </div>
+                        </motion.div>
+                    )}
             </AnimatePresence>
         </motion.nav>
     );

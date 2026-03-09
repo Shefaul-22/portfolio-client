@@ -6,7 +6,7 @@ const skillCategories = [
     {
         title: "Frontend Development",
         icon: <Code2 size={20} />,
-        
+
         skills: [
             { name: "React.js", level: 90 },
             { name: "Next.js", level: 85 },
@@ -23,7 +23,8 @@ const skillCategories = [
             { name: "Node.js", level: 85 },
             { name: "Express.js", level: 80 },
             { name: "MongoDB", level: 85 },
-            { name: "PostgreSQL", level: 70 },
+            { name: "NoSQL", level: 90 },
+            { name: "MYSQL", level: 70 },
             { name: "Firebase", level: 75 }
         ],
         color: "from-green-500 to-emerald-400"
@@ -35,6 +36,7 @@ const skillCategories = [
             { name: "DSA", level: 80 },
             { name: "OOP", level: 85 },
             { name: "C++ (CP)", level: 75 },
+            { name: "Java (CP)", level: 75 },
             { name: "System Design", level: 65 }
         ],
         color: "from-purple-500 to-pink-400"
@@ -67,7 +69,7 @@ const SkillAndTechStack = () => {
     };
 
     return (
-        <section id="skills" className="relative py-24 px-6 overflow-hidden">
+        <section id="skills" className="relative py-12 px-6 overflow-hidden">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -z-10" />
 
             <div className="max-w-6xl mx-auto">
@@ -88,46 +90,48 @@ const SkillAndTechStack = () => {
                     viewport={{ once: true }}
                     className="grid grid-cols-1 md:grid-cols-2 gap-8"
                 >
-                    {skillCategories.map((category, index) => (
-                        <motion.div
-                            key={index}
-                            variants={itemVariants}
-                            className="group p-8 rounded-[2.5rem] glass border border-white/5 hover:border-primary/20 transition-all duration-500"
-                        >
-                            <div className="flex items-center gap-4 mb-10">
-                                <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${category.color} p-[1px]`}>
-                                    <div className="w-full h-full rounded-[calc(1rem-1px)] bg-background/90 flex items-center justify-center text-foreground transition-transform duration-500 group-hover:scale-90">
-                                        {category.icon}
+                    {
+                        skillCategories.map((category, index) => (
+                            <motion.div
+                                key={index}
+                                variants={itemVariants}
+                                className="group p-8 rounded-[2.5rem] glass border border-white/5 hover:border-primary/40 transition-all duration-600 hover:scale-105"
+                            >
+                                <div className="flex items-center gap-4 mb-10">
+                                    <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${category.color} p-[1px]`}>
+                                        <div className="w-full h-full rounded-[calc(1rem-1px)] bg-background/90 flex items-center justify-center text-foreground transition-transform duration-500 group-hover:scale-90">
+                                            {category.icon}
+                                        </div>
                                     </div>
+                                    <h3 className="text-2xl font-bold tracking-tight">{category.title}</h3>
                                 </div>
-                                <h3 className="text-2xl font-bold tracking-tight">{category.title}</h3>
-                            </div>
 
-                            <div className="grid gap-6">
-                                {category.skills.map((skill, sIndex) => (
-                                    <div key={sIndex} className="space-y-2">
-                                        <div className="flex justify-between items-end">
-                                            <span className="text-sm font-bold uppercase tracking-widest text-foreground/80">
-                                                {skill.name}
-                                            </span>
-                                            <span className="text-[10px] font-mono text-primary/60">
-                                                {skill.level}%
-                                            </span>
-                                        </div>
-                                        {/* Graphical Progress Bar */}
-                                        <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                                            <motion.div
-                                                initial={{ width: 0 }}
-                                                whileInView={{ width: `${skill.level}%` }}
-                                                transition={{ duration: 1, delay: 0.5 + (sIndex * 0.1) }}
-                                                className={`h-full bg-gradient-to-r ${category.color}`}
-                                            />
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </motion.div>
-                    ))}
+                                <div className="grid gap-6">
+                                    {
+                                        category.skills.map((skill, sIndex) => (
+                                            <div key={sIndex} className="space-y-2">
+                                                <div className="flex justify-between items-end">
+                                                    <span className="text-sm font-bold uppercase tracking-widest text-foreground/80">
+                                                        {skill.name}
+                                                    </span>
+                                                    <span className="text-[10px] font-mono text-primary/60">
+                                                        {skill.level}%
+                                                    </span>
+                                                </div>
+                                                {/* Graphical Progress Bar */}
+                                                <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                                                    <motion.div
+                                                        initial={{ width: 0 }}
+                                                        whileInView={{ width: `${skill.level}%` }}
+                                                        transition={{ duration: 1, delay: 0.5 + (sIndex * 0.1) }}
+                                                        className={`h-full bg-gradient-to-r ${category.color}`}
+                                                    />
+                                                </div>
+                                            </div>
+                                        ))}
+                                </div>
+                            </motion.div>
+                        ))}
                 </motion.div>
             </div>
         </section>
