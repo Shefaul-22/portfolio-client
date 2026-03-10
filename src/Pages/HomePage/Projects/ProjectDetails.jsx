@@ -12,7 +12,9 @@ import {
 } from "lucide-react";
 
 const ProjectDetails = () => {
+    
     const location = useLocation();
+
     const { id } = useParams();
 
 
@@ -26,7 +28,7 @@ const ProjectDetails = () => {
             if (element) {
                 element.scrollIntoView({ behavior: "smooth" });
             }
-        }, 100);
+        }, 400);
     };
 
     useEffect(() => {
@@ -44,6 +46,7 @@ const ProjectDetails = () => {
         );
     }
 
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -52,7 +55,7 @@ const ProjectDetails = () => {
         >
             <div className="max-w-6xl mx-auto">
                 {/* Back Button */}
-                <Link
+                {/* <Link
                     to="/"
 
                     onClick={handleBackClick}
@@ -63,10 +66,10 @@ const ProjectDetails = () => {
                         <ArrowLeft size={20} />
                     </div>
                     <span className="font-bold uppercase tracking-widest text-xs">Back to Projects</span>
-                </Link>
+                </Link> */}
 
                 {/* Hero Section */}
-                <div className="grid lg:grid-cols-2 gap-12 items-start mb-20">
+                <div className="grid lg:grid-cols-2 gap-12 items-start my-10">
                     <motion.div
                         initial={{ x: -30, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
@@ -158,6 +161,23 @@ const ProjectDetails = () => {
                             </li>
                         </ul>
                     </div>
+                </div>
+
+
+
+                <div className="pt-6 md:pt-12 flex justify-center">
+                    <Link
+                        to="/"
+
+                        onClick={handleBackClick}
+
+                        className="inline-flex items-center gap-2 text-foreground hover:text-primary mb-12 transition-all group"
+                    >
+                        <div className="p-2 rounded-2xl glass-strong border border-primary/20 text-primary hover:bg-primary/10 text-[11px] font-black uppercase tracking-widest transition-all duration-300 group/btn">
+                            <ArrowLeft size={20} />
+                        </div>
+                        <span className="font-bold uppercase tracking-widest text-xs">Back to Projects</span>
+                    </Link>
                 </div>
             </div>
         </motion.div>
