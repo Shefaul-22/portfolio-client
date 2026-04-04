@@ -135,8 +135,8 @@ const Hero = () => {
                         className="pt-4"
                     >
                         <a
-                            href="/Resume_Shefaul_Karim.pdf"
-                            download="Resume_Md_Shefaul_Karim.pdf"
+                            href="/Resume_MD_Shefaul_Karim.pdf"
+                            download="Resume_MD_Shefaul_Karim.pdf"
                             className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-sm group transition-all duration-300 hover:shadow-[0_0_30px_rgba(var(--primary),0.4)] hover:scale-[1.02] active:scale-95"
                         >
                             <FileText size={18} className="group-hover:rotate-12 transition-transform" />
